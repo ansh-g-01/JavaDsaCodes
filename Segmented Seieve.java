@@ -1,58 +1,56 @@
-import java.util.*;
+//Time complexity -  O(N)
+
+import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main
 {
-    public static void main(String[] args)
+    public static void main(String args[])
     {
-        int u=75;
-        int l=25;
-        int sqrtlimit=(int) Math.sqrt(u); // To set limit as square toot of the number  
-        ArrayList<Integer> primes = new ArrayList<>();// Array to store the prime numbers from 1 to srt of n 
-        
-        boolean[] isprime= new boolean[sqrtlimit+1]; // boolean list to find prime numbers till 1 to sqrt of that number
-        Arrays.fill(isprime,true);// Marks all numbers from 1 to root(n) as prime
+        Scanner input= new Scanner(System.in);//make scanner object to take input
+        int n=input.nextInt();//take input from user
+        //intialisation
+        int sqrt=(int) Math.sqrt(n);
+        boolean[] sieve = new boolean[sqrt+1];
+        boolean[] prime_array = new boolean[n+1];
+        Arrays.fill(prime_array,true);
+        Arrays.fill(sieve,true);
+        ///////
 
 
 
-
-        //Running Simple seive from 1 to squareroot(n) to find out prime numbers in that range and add them primes list
-        
-        for(int i=2;i<sqrtlimit;i++)
+        //Finding prime numbers till square root of N , using simple sieve
+        for(int i=2;i<=sqrt;i++)
         {
-            if(isprime[i])
+            if(sieve[i])
             {
-                primes.add(i);
-                for(int p=i*i;p<sqrtlimit;p+=i)
+                for(int j=i+i;j<=sqrt;j=j+i)
                 {
-                    isprime[p]=false;
+                    sieve[j]=false;
                 }
             }
         }
-        boolean[] primesList= new boolean[u-l+2];
-
-
-
-            
-       Arrays.fill(primesList,true);
-       for(int p:primes)
-
-       {
-           int start= (int) (Math.ceil((double) l/p)) *p;
-           for(int i=start;i<=u;i+=p)
-           {
-                primesList[i-l]=false;
-           }
-           
-       }
-       //Code to print list of prime numbers
-       for(int i=l;i<=u;i++)
-       {
-          if(primesList[i-l])
-          {
-              System.out.print(i+" ");
-          }
-       }
         
+
+        //With help of prime numbers tills sqrt of n , eliminate all composites till N
+        for(int i=2;i<=sqrt;i++)
+        {
+            if(sieve[i])
+            {
+                for(int j=i+i;j<=n;j=j+i)
+                {
+                    prime_array[j]=false;
+                }
+            }
+        }
         
+        //Print the prime numbers
+        for(int i=2;i<=n;i++)
+        {
+            if(prime_array[i])
+            {
+                System.out.print(i+" ");
+            }
+        }
     }
 }

@@ -1,3 +1,5 @@
+//Time comlexity  -  O(N log (log N))
+
 import java.util.Scanner;
 import java.util.Arrays;
 
