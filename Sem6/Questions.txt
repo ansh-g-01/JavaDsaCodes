@@ -1,0 +1,20 @@
+Boundary Traversal 
+Time complexity : O(h), where h is the height of the tree
+In worst case the height can be n and in best case tree can be balanced and height can be logn. Thus O(n) to O(logn)
+1.Can we modify the algo to include only distinc values?
+Yes , we can you set ds 
+2.Can you implement the binary tree boundary traversal iteratively?
+yes, simulate the recursive process by maintaining a collection of nodes to be processed
+(techincially a stack would be required just in rightboundary traversal. Rest of it can be done just using while loop)
+
+
+
+BFS
+Space complexity : O(V). In worst case sceanrio, all of the nodes can be neighbours of the parent node (or even each other!).
+So the queue used might get full in the fisrt iteration only with n nodes.
+
+Time complexity :O(V+E). The plus sign basically means, whichever is bigger.Which one would be bigger? This depends on the 
+situation, which basically means the tree. A tree as I explained in the sceanrio may be very flat (that 0 or 1 depth).
+ or very deep (n depth)
+
+ 
