@@ -1,0 +1,32 @@
+// left child = 2*n +1 
+// right child = 2*n +2
+import java.util.ArrayList;
+
+class Main 
+{
+    public static void Traverse(ArrayList<Integer> tree, int curr)
+    {
+        if ( curr >= tree.size() || tree.get(curr)== -1)
+        {
+            return ;
+        }
+        else
+        {   System.out.print(tree.get(curr)+" ");//Root
+            Traverse(tree, curr*2 + 1);//Left
+            Traverse(tree,curr*2 + 2);//Right
+        }
+    }
+    public static void main(String args[])
+    {
+        ArrayList<Integer>  tree = new ArrayList<>();
+        
+        for(int i=0;i<10;i++)
+        {
+            tree.add(i);
+        }
+        System.out.println("Preorder traversal is: ");
+        Traverse(tree,0);
+    }
+    
+}
+
